@@ -12,7 +12,7 @@ using System.Windows.Controls;
 
 namespace testnew
 {
-    public class Serializationer : MainWindow
+    public class Serializationer 
     {
         public static void WriteXml(List<Student> student)
         {
@@ -52,8 +52,7 @@ namespace testnew
                     {
                         Content = newStudent
                     };
-                    ListOfStudent.Add(newStudent);
-                    theListView.Items.Add(lvi);
+                    
 
                 }
             }
