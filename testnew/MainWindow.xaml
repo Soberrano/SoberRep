@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:testnew"
         mc:Ignorable="d"
-        Title="MainWindow" Height="378.656" Width="522.331">
+        Title="MainWindow" Height="393.433" Width="530.643">
     <Grid>
-        <ListView Name="theListView" HorizontalAlignment="Left" Height="321" VerticalAlignment="Top" Width="400">
+        <ListView Name="theListView" HorizontalAlignment="Left" Height="349" VerticalAlignment="Top" Width="400">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
@@ -33,7 +33,7 @@
         <Label Content="ФИО студента" HorizontalAlignment="Left" Height="26" Margin="405,28,0,0" VerticalAlignment="Top" Width="103"/>
         <Button Command="{Binding AddButtonClick}" Content="Добавить" HorizontalAlignment="Left" Margin="405,269,0,0" VerticalAlignment="Top" Width="103" Height="23" />
         <Button Command ="{Binding ChangeButtonClick}" Content="Редактировать" HorizontalAlignment="Left" Margin="405,298,0,0" VerticalAlignment="Top" Width="103" Height="23"/>
-        <Button Content="Button" HorizontalAlignment="Left" Height="23" Margin="405,326,0,-0.2" VerticalAlignment="Top" Width="101" Click="Button_Click"/>
+        <Button Content="Загрузить" HorizontalAlignment="Left" Height="23" Margin="405,326,0,-0.2" VerticalAlignment="Top" Width="101" Click="Button_Click"/>
 
     </Grid>
 </Window>

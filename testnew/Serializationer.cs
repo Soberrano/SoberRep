@@ -7,8 +7,8 @@ using System.Xml;
 using System.ComponentModel;
 using System.Xml.Serialization;
 using System.IO;
-using System.Windows;
 using System.Windows.Controls;
+using System.Windows;
 
 namespace testnew
 {
@@ -40,25 +40,22 @@ namespace testnew
 
         }
 
-        public void GetStudents()
+        public List<Student> GetStudents()
         {
-            //Student student = new Student { FIO = "ФиоСтудента", Facult = "Факультет", Spec = "Специальность", Course = "Курс", Group = "Группа" };
             MainWindow mw = new MainWindow();
             var xmlser = new XmlSerializer(typeof(List<Student>));
             string filename = "Serialization001.xml";
+
             if (File.Exists(filename))
             {
                 using (FileStream fs = new FileStream(filename, FileMode.Open))
                 {
                     var newStudent = new List<Student>();
                     newStudent = (List<Student>)xmlser.Deserialize(fs);
-                    ListViewItem lvi = new ListViewItem()
-                    {
-                        Content = newStudent
-                    };
-                    mw.theListView.Items.Add(lvi);
+                    return newStudent;
                 }
             }
+            return null;
 
         }
     }

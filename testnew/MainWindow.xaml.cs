@@ -196,8 +196,10 @@ namespace testnew
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
-            ser.GetStudents();
+            foreach (var i in ser.GetStudents())
+            {
+                theListView.Items.Add(i);
+            }
         }
     }
     #endregion
