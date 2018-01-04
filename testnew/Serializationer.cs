@@ -12,7 +12,7 @@ using System.Windows.Controls;
 
 namespace testnew
 {
-    public class Serializationer 
+    public class Serializationer
     {
         public static void WriteXml(List<Student> student)
         {
@@ -23,7 +23,8 @@ namespace testnew
                 {
                     XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
                     ns.Add("", "");
-                    XmlSerializer serializer = new XmlSerializer(typeof(List<Student>));
+                    //XmlRootAttribute root = new XmlRootAttribute("List<Student>");
+                    XmlSerializer serializer = new XmlSerializer(typeof(List<Student>)/*, root*/);
                     serializer.Serialize(writer, student, ns);
                 }
                 catch
@@ -41,33 +42,24 @@ namespace testnew
 
         public void GetStudents()
         {
-            var xmlser = new XmlSerializer(typeof(Student));
+            //Student student = new Student { FIO = "ФиоСтудента", Facult = "Факультет", Spec = "Специальность", Course = "Курс", Group = "Группа" };
+            MainWindow mw = new MainWindow();
+            var xmlser = new XmlSerializer(typeof(List<Student>));
             string filename = "Serialization001.xml";
             if (File.Exists(filename))
             {
                 using (FileStream fs = new FileStream(filename, FileMode.Open))
                 {
-                    var newStudent = (Student)xmlser.Deserialize(fs);
+                    var newStudent = new List<Student>();
+                    newStudent = (List<Student>)xmlser.Deserialize(fs);
                     ListViewItem lvi = new ListViewItem()
                     {
                         Content = newStudent
                     };
-                    
-
+                    mw.theListView.Items.Add(lvi);
                 }
             }
-            //Student student = null;
-            //string filename = "Serialization001.xml";
-            //XmlSerializer xser = new XmlSerializer(typeof(Student));
-            //if (File.Exists(filename))
-            //{
-            //    using (StreamReader fs = new StreamReader(filename))
-            //    {
-            //        student = (Student)xser.Deserialize(fs);
-            //        fs.Close();
-            //    }
 
-            //}
         }
     }
 }

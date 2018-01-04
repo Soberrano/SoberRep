@@ -202,7 +202,6 @@ namespace testnew
     }
     #endregion
     [Serializable]
-    [XmlRoot("Student")]
     public class Student
     {
         [XmlAttribute("ФиоСтудента")]
