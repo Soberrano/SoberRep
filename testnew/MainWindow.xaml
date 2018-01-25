@@ -7,7 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="393.433" Width="530.643">
     <Grid>
-        <ListView Name="theListView" HorizontalAlignment="Left" Height="349" VerticalAlignment="Top" Width="400">
+        <!--<ListView Name="theListView" HorizontalAlignment="Left" Height="349" VerticalAlignment="Top" Width="400" >
+
+
+            --><!--GridViewColumnHeader.Click="GridViewColumnHeaderClickedHandler"--><!--
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
@@ -18,8 +21,19 @@
                         <GridViewColumn DisplayMemberBinding="{Binding Path= Group}" Header="Группа"></GridViewColumn>
                     </GridView.Columns>
                 </GridView>
-            </ListView.View>
-        </ListView>
+            </ListView.View>-->
+            
+        <!--</ListView>-->
+        <DataGrid Background="White" Name="theListView" Margin="0,0,124,0" ItemsSource="{Binding ListOfStudent, Mode=TwoWay}" CanUserAddRows="False" AutoGenerateColumns="False" SelectedItem="{Binding SelectedStudent}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path= FIO}" Header="Фио студента" Width="130">
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path= Facult}" Header="Факультет"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path= Spec}" Header="Спциальность"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path= Course}" Header="Курс" Width="40"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path= Group}" Header="Группа"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
         <TextBox Name="tbGroup" HorizontalAlignment="Left" Height="21" Margin="405,243,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103" Text="{Binding Path=TBgroup, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         <TextBox Name="tbFIO" HorizontalAlignment="Left" Height="21" Margin="405,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103" Text="{Binding Path=TBfio, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         <TextBox Name="tbFaculty" HorizontalAlignment="Left" Height="21" Margin="405,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103" Text="{Binding Path=TBfacult, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
@@ -34,6 +48,7 @@
         <Button Command="{Binding AddButtonClick}" Content="Добавить" HorizontalAlignment="Left" Margin="405,269,0,0" VerticalAlignment="Top" Width="103" Height="23" />
         <Button Command ="{Binding ChangeButtonClick}" Content="Редактировать" HorizontalAlignment="Left" Margin="405,298,0,0" VerticalAlignment="Top" Width="103" Height="23"/>
         <Button Content="Загрузить" HorizontalAlignment="Left" Height="23" Margin="405,326,0,-0.2" VerticalAlignment="Top" Width="101" Click="Button_Click"/>
+       
 
     </Grid>
 </Window>

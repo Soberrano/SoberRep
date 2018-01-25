@@ -9,12 +9,13 @@ using System.Xml.Serialization;
 using System.IO;
 using System.Windows.Controls;
 using System.Windows;
+using System.Collections.ObjectModel;
 
 namespace testnew
 {
     public class Serializationer
     {
-        public static void WriteXml(List<Student> student)
+        public static void WriteXml(ObservableCollection<Student> student)
         {
 
             using (StreamWriter writer = new StreamWriter("Serialization001.xml"))
@@ -23,8 +24,7 @@ namespace testnew
                 {
                     XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
                     ns.Add("", "");
-                    //XmlRootAttribute root = new XmlRootAttribute("List<Student>");
-                    XmlSerializer serializer = new XmlSerializer(typeof(List<Student>)/*, root*/);
+                    XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<Student>));
                     serializer.Serialize(writer, student, ns);
                 }
                 catch
@@ -35,23 +35,21 @@ namespace testnew
                 {
                     writer.Close();
                 }
-
             }
-
         }
 
-        public List<Student> GetStudents()
+        public ObservableCollection<Student> GetStudents()
         {
             MainWindow mw = new MainWindow();
-            var xmlser = new XmlSerializer(typeof(List<Student>));
+            var xmlser = new XmlSerializer(typeof(ObservableCollection<Student>));
             string filename = "Serialization001.xml";
 
             if (File.Exists(filename))
             {
                 using (FileStream fs = new FileStream(filename, FileMode.Open))
                 {
-                    var newStudent = new List<Student>();
-                    newStudent = (List<Student>)xmlser.Deserialize(fs);
+                    var newStudent = new ObservableCollection<Student>();
+                    newStudent = (ObservableCollection<Student>)xmlser.Deserialize(fs);
                     return newStudent;
                 }
             }

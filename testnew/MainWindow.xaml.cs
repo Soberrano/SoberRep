@@ -26,9 +26,10 @@ namespace testnew
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-
-        public List<Student> ListOfStudent = new List<Student>();
-
+        public ObservableCollection<Student> ListOfStudent { get; set; } = new ObservableCollection<Student>();
+        public LambdaCommand AddButtonClick { get; set; }
+        public LambdaCommand ChangeButtonClick { get; set; }
+        Serializationer ser = new Serializationer();
         public MainWindow()
         {
             InitializeComponent();
@@ -40,10 +41,20 @@ namespace testnew
                 {
                     AddToList();
                 });
-
-            ChangeButtonClick = new LambdaCommand((param) => { return true; }, (param) => { Reload(); });
             DataContext = this;
         }
+        /// <summary>
+        /// Добавление нового студента в ListOfStudents
+        /// </summary>
+        public void AddToList()
+        {
+            Student student = new Student { FIO = TBfio, Facult = TBfacult, Spec = TBspec, Course = TBcourse, Group = TBgroup };
+            ListOfStudent.Add(student);
+            Serializationer.WriteXml(ListOfStudent);
+
+        }
+
+        #region Рабочие лошадки
         bool EmptyLi()
         {
             if (!string.IsNullOrEmpty(TBfio) && !string.IsNullOrEmpty(TBgroup) && !string.IsNullOrEmpty(TBfacult) && !string.IsNullOrEmpty(TBspec) && !string.IsNullOrEmpty(TBcourse))
@@ -51,30 +62,8 @@ namespace testnew
                 return true;
             }
             else return false;
-        }
-
-        /// <summary>
-        /// Добавление нового студента в ListView
-        /// </summary>
-        public void AddToList()
-        {
-            Student student = new Student { FIO = TBfio, Facult = TBfacult, Spec = TBspec, Course = TBcourse, Group = TBgroup };
-            ListViewItem lvi = new ListViewItem()
-            {
-                Content = student
-            };
-            ListOfStudent.Add(student);
-            theListView.Items.Add(lvi);
-            Serializationer.WriteXml(ListOfStudent);
-        }
-        public void Reload()
-        {
 
         }
-
-       
-        #region Рабочие лошадки
-
         string _tbfio;
         public string TBfio
         {
@@ -156,67 +145,18 @@ namespace testnew
         }
 
 
-
-        public LambdaCommand AddButtonClick { get; set; }
-        public LambdaCommand ChangeButtonClick { get; set; }
-
-        Serializationer ser = new Serializationer();
-
-        public class LambdaCommand : ICommand
-        {
-            delegate bool CanExecutedelegate(object nekoeOpisanieCanExec);
-            delegate void Executedelegate(object nekoeOpisanieExec);
-
-            CanExecutedelegate _CanExecuteDelegate;
-            Executedelegate _ExecuteDelegate;
-
-
-            public LambdaCommand(Func<object, bool> konkretnoeOpisanieCanExec, Action<object> konkretnoeOpisanieExec)
-            {
-
-                _CanExecuteDelegate = new CanExecutedelegate(konkretnoeOpisanieCanExec);
-                _ExecuteDelegate = new Executedelegate(konkretnoeOpisanieExec);
-            }
-
-
-            public bool CanExecute(object exemplarDelegata)
-            {
-                return _CanExecuteDelegate(exemplarDelegata);
-            }
-            public void Execute(object exemplarDelegata)
-            {
-                _ExecuteDelegate(exemplarDelegata);
-            }
-            public void CanExeсChanged()
-            {
-                if (CanExecuteChanged != null)
-                    CanExecuteChanged.Invoke(this, new EventArgs());
-            }
-            public event EventHandler CanExecuteChanged;
-        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             foreach (var i in ser.GetStudents())
             {
-                theListView.Items.Add(i);
+                ListOfStudent.Add(i);
             }
         }
     }
+
     #endregion
-    [Serializable]
-    public class Student
-    {
-        [XmlAttribute("ФиоСтудента")]
-        public string FIO { get; set; }
-        [XmlAttribute("Факультет")]
-        public string Facult { get; set; }
-        [XmlAttribute("Специальность")]
-        public string Spec { get; set; }
-        [XmlAttribute("Курс")]
-        public string Course { get; set; }
-        [XmlAttribute("Группа")]
-        public string Group { get; set; }
-    }
+
+
 
 
 }
