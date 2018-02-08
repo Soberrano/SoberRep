@@ -10,51 +10,38 @@ using System.IO;
 using System.Windows.Controls;
 using System.Windows;
 using System.Collections.ObjectModel;
+using Newtonsoft.Json;
 
-namespace testnew
+namespace StudentCard
 {
     public class Serializationer
     {
-        public static void WriteXml(ObservableCollection<Student> student)
+        //    ObservableCollection<Student> _history = new ObservableCollection<Student>();
+        public static void Save(ObservableCollection<Student> _history)
         {
-
-            using (StreamWriter writer = new StreamWriter("Serialization001.xml"))
+            try
             {
-                try
-                {
-                    XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
-                    ns.Add("", "");
-                    XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<Student>));
-                    serializer.Serialize(writer, student, ns);
-                }
-                catch
-                {
-                    MessageBox.Show("Ошибка сохранения");
-                }
-                finally
-                {
-                    writer.Close();
-                }
+                string jsonstr = JsonConvert.SerializeObject(_history);
+                var file = File.CreateText("history.json");// создает или открывает файл
+                file.Write(jsonstr);// записать в созданный файл серелезованную историю
+                file.Close();
+            }
+            catch
+            {
+                MessageBox.Show(" не удалось серелизовать");
             }
         }
-
-        public ObservableCollection<Student> GetStudents()
+        public ObservableCollection<Student> Load()
         {
-            MainWindow mw = new MainWindow();
-            var xmlser = new XmlSerializer(typeof(ObservableCollection<Student>));
-            string filename = "Serialization001.xml";
-
-            if (File.Exists(filename))
+            
+            if (File.Exists("history.json"))
             {
-                using (FileStream fs = new FileStream(filename, FileMode.Open))
-                {
-                    var newStudent = new ObservableCollection<Student>();
-                    newStudent = (ObservableCollection<Student>)xmlser.Deserialize(fs);
-                    return newStudent;
-                }
+                string jsonstr = File.ReadAllText("history.json");
+                var _history = JsonConvert.DeserializeObject<ObservableCollection<Student>>(jsonstr);
+                return _history;
             }
             return null;
-
         }
+      
     }
 }

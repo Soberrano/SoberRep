@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace testnew
+namespace StudentCard
 {
     [Serializable]
     public class Student
@@ -13,9 +13,9 @@ namespace testnew
         [XmlAttribute("ФиоСтудента")]
         public string FIO { get; set; }
         [XmlAttribute("Факультет")]
-        public string Facult { get; set; }
+        public string Faculty { get; set; }
         [XmlAttribute("Специальность")]
-        public string Spec { get; set; }
+        public string Specialization { get; set; }
         [XmlAttribute("Курс")]
         public string Course { get; set; }
         [XmlAttribute("Группа")]

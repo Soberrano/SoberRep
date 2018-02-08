@@ -18,7 +18,7 @@ using System.Xml;
 using System.ComponentModel;
 using System.Xml.Serialization;
 
-namespace testnew
+namespace StudentCard
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
@@ -30,12 +30,14 @@ namespace testnew
         public LambdaCommand AddButtonClick { get; set; }
         public LambdaCommand ChangeButtonClick { get; set; }
         Serializationer ser = new Serializationer();
+        public bool Check = false;
         public MainWindow()
         {
             InitializeComponent();
+            ReadStudents();
             AddButtonClick = new LambdaCommand((param) =>
             {
-                return EmptyLi();
+                return EmptyTest();
             },
                 (param) =>
                 {
@@ -48,14 +50,14 @@ namespace testnew
         /// </summary>
         public void AddToList()
         {
-            Student student = new Student { FIO = TBfio, Facult = TBfacult, Spec = TBspec, Course = TBcourse, Group = TBgroup };
+            Student student = new Student { FIO = TBfio, Faculty = TBfacult, Specialization = TBspec, Course = TBcourse, Group = TBgroup };
             ListOfStudent.Add(student);
-            Serializationer.WriteXml(ListOfStudent);
+            Serializationer.Save(ListOfStudent);
 
         }
 
         #region Рабочие лошадки
-        bool EmptyLi()
+        bool EmptyTest()
         {
             if (!string.IsNullOrEmpty(TBfio) && !string.IsNullOrEmpty(TBgroup) && !string.IsNullOrEmpty(TBfacult) && !string.IsNullOrEmpty(TBspec) && !string.IsNullOrEmpty(TBcourse))
             {
@@ -144,10 +146,9 @@ namespace testnew
             }
         }
 
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        void ReadStudents()
         {
-            foreach (var i in ser.GetStudents())
+            foreach (var i in ser.Load())
             {
                 ListOfStudent.Add(i);
             }

@@ -58,7 +58,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="LambdaCommand.cs" />
-    <Compile Include="ListViewSort.cs" />
     <Compile Include="Serializationer.cs" />
     <Compile Include="Student.cs" />
     <Page Include="MainWindow.xaml">

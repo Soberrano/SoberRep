@@ -5,32 +5,32 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace testnew
+namespace StudentCard
 {
     public class LambdaCommand : ICommand
     {
-        delegate bool CanExecutedelegate(object nekoeOpisanieCanExec);
-        delegate void Executedelegate(object nekoeOpisanieExec);
+        delegate bool CanExecutedelegate(object CanExec);
+        delegate void Executedelegate(object Exec);
 
-        CanExecutedelegate _CanExecuteDelegate;
-        Executedelegate _ExecuteDelegate;
+        CanExecutedelegate _canExecuteDelegate;
+        Executedelegate _executeDelegate;
 
 
-        public LambdaCommand(Func<object, bool> konkretnoeOpisanieCanExec, Action<object> konkretnoeOpisanieExec)
+        public LambdaCommand(Func<object, bool> canExec, Action<object> exec)
         {
 
-            _CanExecuteDelegate = new CanExecutedelegate(konkretnoeOpisanieCanExec);
-            _ExecuteDelegate = new Executedelegate(konkretnoeOpisanieExec);
+            _canExecuteDelegate = new CanExecutedelegate(canExec);
+            _executeDelegate = new Executedelegate(exec);
         }
 
 
-        public bool CanExecute(object exemplarDelegata)
+        public bool CanExecute(object canExec)
         {
-            return _CanExecuteDelegate(exemplarDelegata);
+            return _canExecuteDelegate(canExec);
         }
-        public void Execute(object exemplarDelegata)
+        public void Execute(object exec)
         {
-            _ExecuteDelegate(exemplarDelegata);
+            _executeDelegate(exec);
         }
         public void CanExeсChanged()
         {
