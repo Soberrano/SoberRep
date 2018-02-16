@@ -44,16 +44,28 @@ namespace StudentCard
                     AddToList();
                 });
             DataContext = this;
+            
         }
         /// <summary>
-        /// Добавление нового студента в ListOfStudents
+        /// Добавление нового студента в ListOfStudent
         /// </summary>
         public void AddToList()
         {
             Student student = new Student { FIO = TBfio, Faculty = TBfacult, Specialization = TBspec, Course = TBcourse, Group = TBgroup };
             ListOfStudent.Add(student);
-            Serializationer.Save(ListOfStudent);
 
+        }
+
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            if (MessageBox.Show("Сохранить изменения?", "Закрытие приложения", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
+            {
+                //Если "Нет", просто выйди
+            }
+            else
+            {
+                Serializationer.Save(ListOfStudent);//Если "Да", то сохрани и выйди
+            }
         }
 
         #region Рабочие лошадки
@@ -153,6 +165,8 @@ namespace StudentCard
                 ListOfStudent.Add(i);
             }
         }
+
+        
     }
 
     #endregion

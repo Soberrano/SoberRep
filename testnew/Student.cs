@@ -7,18 +7,12 @@ using System.Xml.Serialization;
 
 namespace StudentCard
 {
-    [Serializable]
     public class Student
     {
-        [XmlAttribute("ФиоСтудента")]
         public string FIO { get; set; }
-        [XmlAttribute("Факультет")]
         public string Faculty { get; set; }
-        [XmlAttribute("Специальность")]
         public string Specialization { get; set; }
-        [XmlAttribute("Курс")]
         public string Course { get; set; }
-        [XmlAttribute("Группа")]
         public string Group { get; set; }
     }
 }

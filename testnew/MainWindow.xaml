@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StudentCard"
         mc:Ignorable="d"
-        Title="MainWindow" Height="397.633" Width="540.243">
+        Title="Учёт студентов" Closing="Window_Closing"  Height="397.633" Width="540.243" >
     <Grid Margin="2,0,1,-0.2" HorizontalAlignment="Stretch" Width="521" Height="345" VerticalAlignment="Stretch">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="379*"/>
@@ -15,7 +15,7 @@
             <RowDefinition/>
             <RowDefinition Height="0*"/>
         </Grid.RowDefinitions>
-        <DataGrid Grid.Row="0" Grid.Column="0" Background="White" Name="theListView"  ItemsSource="{Binding ListOfStudent, Mode=TwoWay}" CanUserAddRows="False" AutoGenerateColumns="False" SelectedItem="{Binding SelectedStudent}" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" Grid.RowSpan="2" Height="345" VerticalAlignment="Stretch" Margin="0,0,0.2,-0.2">
+        <DataGrid  Grid.Row="0" Grid.Column="0" Background="White" Name="theListView" SelectedItem="{Binding SelectedStudent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  ItemsSource="{Binding ListOfStudent}" CanUserAddRows="False" AutoGenerateColumns="False" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" Grid.RowSpan="2" Height="345" VerticalAlignment="Stretch" Margin="0,0,0.2,-0.2">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path= FIO}" Header="Фио студента" Width="125"></DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding Path= Faculty}" Header="Факультет" Width="auto"></DataGridTextColumn>
