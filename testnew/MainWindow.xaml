@@ -5,28 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StudentCard"
         mc:Ignorable="d"
-        Title="Учёт студентов" Closing="Window_Closing"  Height="397.633" Width="540.243" >
-    <Grid Margin="2,0,1,-0.2" HorizontalAlignment="Stretch" Width="521" Height="345" VerticalAlignment="Stretch">
+        Title="Учёт студентов" Closing="Window_Closing"  Height="397.633" Width="493.843" >
+    <Grid   >
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="379*"/>
-            <ColumnDefinition Width="142*"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="169*"/>
+            <RowDefinition Height="15*"/>
             <RowDefinition Height="0*"/>
         </Grid.RowDefinitions>
-        <DataGrid  Grid.Row="0" Grid.Column="0" Background="White" Name="theListView" SelectedItem="{Binding SelectedStudent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  ItemsSource="{Binding ListOfStudent}" CanUserAddRows="False" AutoGenerateColumns="False" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" Grid.RowSpan="2" Height="345" VerticalAlignment="Stretch" Margin="0,0,0.2,-0.2">
+        <DataGrid  Grid.Row="0" Grid.Column="0" Background="White" Name="theListView" SelectedItem="{Binding SelectedStudent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  ItemsSource="{Binding ListOfStudent}" CanUserAddRows="False" AutoGenerateColumns="False" Margin="0,0,-0.4,0" Grid.RowSpan="2"  >
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path= FIO}" Header="Фио студента" Width="125"></DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding Path= Faculty}" Header="Факультет" Width="auto"></DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding Path= Specialization}" Header="Специальность" Width="auto"></DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding Path= Course}" Header="Курс" Width="auto"></DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding Path= Group}" Header="Группа" Width="auto" ></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path= TelNum}" Header="Номер телефона" Width="auto"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <Button Grid.Row="1" Grid.Column="0"  Content="Добавить" Click="Button_Click"   />
 
 
-        <Grid HorizontalAlignment="Right" VerticalAlignment="Stretch" Width="137" Margin="0,0,0.8,-0.2" Grid.Column="1" Grid.RowSpan="2">
+
+        <!--<Grid Margin="376,0,-0.4,0" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="11*"/>
                 <RowDefinition Height="11*"/>
@@ -39,35 +42,13 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="0*"/>
-            </Grid.ColumnDefinitions>
-            <Button Grid.Row="6" Grid.Column="0" Command="{Binding AddButtonClick}" Content="Добавить" HorizontalContentAlignment="Stretch"  />
-            <Label Grid.Row="3" Grid.Column="0" Content="Специальность" HorizontalContentAlignment="Stretch"    />
-            <Label Grid.Row="4" Grid.Column="0" Content="Курс" HorizontalContentAlignment="Stretch"  />
-            <Label Grid.Row="2" Grid.Column="0" Content="Факультет" HorizontalContentAlignment="Stretch"  />
-            <Label Grid.Row="0" Grid.Column="0" Content="Введите:" HorizontalContentAlignment="Stretch"  />
-            <Label Grid.Row="5" Grid.Column="0" Content="Группу" HorizontalContentAlignment="Stretch"   />
-            <Label Grid.Row="1" Grid.Column="0" Content="ФИО студента" HorizontalContentAlignment="Stretch"  />
-
-            <Grid HorizontalAlignment="Right" VerticalAlignment="Stretch" Width="138" Grid.RowSpan="7" Margin="0,1,-1.2,-0.2" Grid.ColumnSpan="2">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="70*"/>
-                    <RowDefinition Height="18*"/>
-                    <RowDefinition Height="27*"/>
-                    <RowDefinition Height="18*"/>
-                    <RowDefinition Height="27*"/>
-                    <RowDefinition Height="18*"/>
-                    <RowDefinition Height="27*"/>
-                    <RowDefinition Height="18*"/>
-                    <RowDefinition Height="27*"/>
-                    <RowDefinition Height="18*"/>
-                    <RowDefinition Height="43*"/>
-                </Grid.RowDefinitions>
-                <TextBox Grid.Row="9" x:Name="tbGroup" HorizontalContentAlignment="Stretch"  TextWrapping="Wrap" VerticalAlignment="Top"  Text="{Binding TBgroup, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBox Grid.Row="1" x:Name="tbFIO" HorizontalContentAlignment="Stretch"  TextWrapping="Wrap" VerticalAlignment="Top"  Text="{Binding TBfio, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                <TextBox Grid.Row="3" x:Name="tbFaculty" HorizontalContentAlignment="Stretch"  TextWrapping="Wrap" VerticalAlignment="Top"  Text="{Binding TBfacult, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBox Grid.Row="5" x:Name="tbSpecialty" HorizontalContentAlignment="Stretch"  TextWrapping="Wrap" VerticalAlignment="Top"  Text="{Binding TBspec, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBox Grid.Row="7" x:Name="tbCourse" HorizontalContentAlignment="Stretch"  TextWrapping="Wrap" VerticalAlignment="Top"  Text="{Binding TBcourse, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-            </Grid>
-        </Grid>
+            </Grid.ColumnDefinitions>-->
+        <!--<Label Grid.Row="3" Grid.Column="0" Content="Специальность"/>
+            <Label Grid.Row="4" Grid.Column="0" Content="Курс"/>
+            <Label Grid.Row="2" Grid.Column="0" Content="Факультет"/>
+            <Label Grid.Row="0" Grid.Column="0" Content="Введите:"/>
+            <Label Grid.Row="5" Grid.Column="0" Content="Группу"/>
+            <Label Grid.Row="1" Grid.Column="0" Content="ФИО студента"/>-->
+        <!--</Grid>-->
     </Grid>
 </Window>

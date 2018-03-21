@@ -1,0 +1,42 @@
+﻿<Window x:Class="testnew.AddWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:testnew"
+        mc:Ignorable="d"
+        Title="AddWindow" Height="300" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="95*"/>
+            <ColumnDefinition Width="199*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+
+        </Grid.RowDefinitions>
+        <Button Grid.Row="8" Grid.ColumnSpan="2"  Content="Добавить" Click="Button_Click"   />
+        <Label Grid.Row="2" Content="Специальность"  />
+        <Label Grid.Row="3" Content="Курс"  />
+        <Label Grid.Row="5" Content="Факультет"  />
+        <Label Grid.Row="0" Content="Введите:"  />
+        <Label Grid.Row="4" Content="Группу"  />
+        <Label Grid.Row="1" Content="ФИО студента" />
+        <Label Grid.Row="6" Content="Номер телефона" />
+
+        <TextBox Grid.Row="4" Grid.Column="1" x:Name="tbGroup"/>
+        <TextBox Grid.Row="1" Grid.Column="1" x:Name="tbFIO"/>
+        <TextBox Grid.Row="5" Grid.Column="1" x:Name="tbFaculty"/>
+        <TextBox Grid.Row="2" Grid.Column="1" x:Name="tbSpecialty"/>
+        <TextBox Grid.Row="3" Grid.Column="1" x:Name="tbCourse"/>
+        <TextBox Grid.Row="6" Grid.Column="1" x:Name="tbTelNum"/>
+    </Grid>
+</Window>
