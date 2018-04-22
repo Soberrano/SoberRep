@@ -5,9 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:testnew"
         mc:Ignorable="d"
-        Title="AddWindow" Height="300" Width="300">
-    <Grid>
-        <Grid.ColumnDefinitions>
+        Title="AddWindow" Height="244.391" Width="323.415">
+
+    <StackPanel>
+        <UniformGrid Rows="7" Columns="2">
+            <Label  Content="ФИО студента" />
+            <TextBox  x:Name="tbFIO"/>
+            <Label  Content="Специальность"  />
+            <TextBox  x:Name="tbSpecialty"/>
+            <Label  Content="Курс"  />
+            <TextBox  x:Name="tbCourse"/>
+            <Label  Content="Факультет"  />
+            <TextBox  x:Name="tbFaculty"/>
+            <Label  Content="Группу"  />
+            <TextBox  x:Name="tbGroup"/>
+            <Label  Content="Номер телефона" />
+            <TextBox  x:Name="tbTelNum"/>
+        </UniformGrid>
+        <UniformGrid>
+            <Button  Content="Добавить" Click="Button_Click"/>
+        </UniformGrid>
+    </StackPanel>
+    <!--<Grid.ColumnDefinitions>
             <ColumnDefinition Width="95*"/>
             <ColumnDefinition Width="199*"/>
         </Grid.ColumnDefinitions>
@@ -37,6 +56,6 @@
         <TextBox Grid.Row="5" Grid.Column="1" x:Name="tbFaculty"/>
         <TextBox Grid.Row="2" Grid.Column="1" x:Name="tbSpecialty"/>
         <TextBox Grid.Row="3" Grid.Column="1" x:Name="tbCourse"/>
-        <TextBox Grid.Row="6" Grid.Column="1" x:Name="tbTelNum"/>
-    </Grid>
+        <TextBox Grid.Row="6" Grid.Column="1" x:Name="tbTelNum"/>-->
+
 </Window>

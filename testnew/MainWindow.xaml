@@ -5,50 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StudentCard"
         mc:Ignorable="d"
-        Title="Учёт студентов" Closing="Window_Closing"  Height="397.633" Width="493.843" >
-    <Grid   >
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+        Title="Учёт студентов" Closing="Window_Closing"  Height="397.633" Width="509.843" >
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="169*"/>
-            <RowDefinition Height="15*"/>
-            <RowDefinition Height="0*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/> <!--иначе будет не красиво, ибо кнопка добавить будет находится вверху и смещаться по мере добавления записей-->
         </Grid.RowDefinitions>
-        <DataGrid  Grid.Row="0" Grid.Column="0" Background="White" Name="theListView" SelectedItem="{Binding SelectedStudent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  ItemsSource="{Binding ListOfStudent}" CanUserAddRows="False" AutoGenerateColumns="False" Margin="0,0,-0.4,0" Grid.RowSpan="2"  >
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path= FIO}" Header="Фио студента" Width="125"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path= Faculty}" Header="Факультет" Width="auto"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path= Specialization}" Header="Специальность" Width="auto"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path= Course}" Header="Курс" Width="auto"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path= Group}" Header="Группа" Width="auto" ></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path= TelNum}" Header="Номер телефона" Width="auto"></DataGridTextColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-        <Button Grid.Row="1" Grid.Column="0"  Content="Добавить" Click="Button_Click"   />
 
+        <ScrollViewer  >
+            <DataGrid  Background="White" Name="theListView" SelectedItem="{Binding SelectedStudent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  ItemsSource="{Binding ListOfStudent}" CanUserAddRows="False" AutoGenerateColumns="False"  >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Path= FIO}" Header="Фио студента" Width="125"></DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Path= Faculty}" Header="Факультет" Width="auto"></DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Path= Specialization}" Header="Специальность" Width="auto"></DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Path= Course}" Header="Курс" Width="auto"></DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Path= Group}" Header="Группа" Width="auto" ></DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Path= TelNum}" Header="Номер телефона" Width="auto"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
 
-
-        <!--<Grid Margin="376,0,-0.4,0" >
-            <Grid.RowDefinitions>
-                <RowDefinition Height="11*"/>
-                <RowDefinition Height="11*"/>
-                <RowDefinition Height="11*"/>
-                <RowDefinition Height="11*"/>
-                <RowDefinition Height="11*"/>
-                <RowDefinition Height="11*"/>
-                <RowDefinition Height="10*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="0*"/>
-            </Grid.ColumnDefinitions>-->
-        <!--<Label Grid.Row="3" Grid.Column="0" Content="Специальность"/>
-            <Label Grid.Row="4" Grid.Column="0" Content="Курс"/>
-            <Label Grid.Row="2" Grid.Column="0" Content="Факультет"/>
-            <Label Grid.Row="0" Grid.Column="0" Content="Введите:"/>
-            <Label Grid.Row="5" Grid.Column="0" Content="Группу"/>
-            <Label Grid.Row="1" Grid.Column="0" Content="ФИО студента"/>-->
-        <!--</Grid>-->
+        </ScrollViewer>
+        <Button Grid.Row="2" Content="Добавить" Click="Button_Click" />
     </Grid>
 </Window>
